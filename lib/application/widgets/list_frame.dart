@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pokedex_test/application/widgets/type_chip.dart';
+import 'package:pokedex_test/application/utils/colors_utils.dart';
+import 'package:pokedex_test/application/utils/string_utils.dart';
 
 class ListFrame extends StatelessWidget {
   int id = 0;
   String name = '';
   List types = [];
+  String color;
 
-  ListFrame(this.id, this.name, this.types);
+  ListFrame(this.id, this.name, this.types, this.color);
 
   String pokemonOfficialArt() {
     return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.id}.png';
   }
 
   String pokemonLabel() {
-    return '#${this.id.toString().padLeft(3,'0')} ${this.name}';
+    return '#${this.id.toString().padLeft(3,'0')} ${StringUtils.capitalizeFirstLetter(this.name)}';
   }
 
   List<Widget> generateTypes() {
@@ -31,7 +34,7 @@ class ListFrame extends StatelessWidget {
     return Stack(
       children: [
         Container(
-            color: Colors.grey,
+            color: ColorsUtils.pokemonColor(color),
             child: Column(
               children: [
                 Image.network(

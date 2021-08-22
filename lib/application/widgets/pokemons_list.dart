@@ -11,7 +11,7 @@ class PokemonsList extends StatelessWidget {
   buildFrames() {
     List<Widget> pokemonsWidgets = [];
     for (var pokemon in this.pokemons.pokemons) {
-      pokemonsWidgets.add(ListFrame(pokemon.id, pokemon.name, pokemon.types));
+      pokemonsWidgets.add(ListFrame(pokemon.id, pokemon.name, pokemon.types, pokemon.color));
     }
     return pokemonsWidgets;
   }
