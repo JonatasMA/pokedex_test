@@ -1,48 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:pokedex_test/application/models/pokemons.dart';
 import 'package:pokedex_test/application/widgets/type_chip.dart';
 import 'package:pokedex_test/application/utils/colors_utils.dart';
 import 'package:pokedex_test/application/utils/string_utils.dart';
 
 class ListFrame extends StatelessWidget {
-  int id = 0;
-  String name = '';
-  List types = [];
-  String color;
+  Pokemon pokemon;
 
-  ListFrame(this.id, this.name, this.types, this.color);
+  ListFrame(this.pokemon);
 
-  String pokemonOfficialArt() {
-    return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.id}.png';
+  String _pokemonOfficialArt() {
+    return 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${this.pokemon.id}.png';
   }
 
-  String pokemonLabel() {
-    return '#${this.id.toString().padLeft(3,'0')} ${StringUtils.capitalizeFirstLetter(this.name)}';
+  String _pokemonLabel() {
+    return '#${this.pokemon.id.toString().padLeft(3, '0')} ${StringUtils.capitalizeFirstLetter(this.pokemon.name)}';
   }
 
-  List<Widget> generateTypes() {
+  List<Widget> _generateTypes() {
     List<Widget> types = [];
-    for (var type in this.types) {
-      types.add(TypeChip(type));
+    for (var type in this.pokemon.types) {
+      types.add(TypeChip(type, true));
     }
     return types;
   }
 
   @override
   Widget build(BuildContext context) {
-
     return Stack(
       children: [
         Container(
-            color: ColorsUtils.pokemonColor(color),
-            child: Column(
-              children: [
-                Image.network(
-                  this.pokemonOfficialArt(),
-                  width: 200,
-                ),
-              ],
-            )),
+          color: ColorsUtils.pokemonColor(this.pokemon.color),
+          child: Column(
+            children: [
+              Image.network(
+                this._pokemonOfficialArt(),
+                width: 200,
+              ),
+            ],
+          ),
+        ),
         Positioned(
             child: Container(
               color: Colors.black.withOpacity(0.7),
@@ -54,14 +52,17 @@ class ListFrame extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                          margin: const EdgeInsets.only(bottom: 6),
-                          width: 200,
-                          child: Text(this.pokemonLabel(),
-                              textAlign: TextAlign.left,
-                              style: const TextStyle(color: Colors.white))),
+                        margin: const EdgeInsets.only(bottom: 6),
+                        width: 400,
+                        child: Text(
+                          this._pokemonLabel(),
+                          textAlign: TextAlign.left,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: this.generateTypes(),
+                        children: this._generateTypes(),
                       )
                     ],
                   )),
