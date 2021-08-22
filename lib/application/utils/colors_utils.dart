@@ -71,4 +71,23 @@ class ColorsUtils {
 
     return Color.fromRGBO(74, 74, 74, 1);
   }
+
+  static Color statsBar(stat, opacity) {
+    switch (stat) {
+      case 'HP':
+        return Color.fromRGBO(255, 89, 89, opacity);
+      case 'Atk':
+        return Color.fromRGBO(245, 172, 120, opacity);
+      case 'Def':
+        return Color.fromRGBO(250, 224, 120, opacity);
+      case 'Sp. Atk':
+        return Color.fromRGBO(157, 183, 245, opacity);
+      case 'Sp. Def':
+        return Color.fromRGBO(167, 219, 141, opacity);
+      case 'Spe':
+        return Color.fromRGBO(250, 146, 178, opacity);
+    }
+
+    return Color.fromRGBO(74, 74, 74, 1);
+  }
 }
