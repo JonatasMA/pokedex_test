@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-class RequestPokemons {
+class RequestUtils {
   static Future fetchPokemons() async {
     var headers = {'Content-Type': 'application/json'};
     var body =

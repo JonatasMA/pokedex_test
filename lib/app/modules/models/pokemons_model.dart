@@ -35,8 +35,14 @@ class Pokemons {
 
       Stats stats = extractStats(pokemonsJson['pokemon_v2_pokemonstats']);
 
-      Pokemon pokemon = Pokemon(species['id'], species['name'],
-          pokemonsJson['weight'].toDouble(), types, abilities, stats, species['pokemon_v2_pokemoncolor']['name']);
+      Pokemon pokemon = Pokemon(
+          species['id'],
+          species['name'],
+          pokemonsJson['weight'].toDouble(),
+          types,
+          abilities,
+          stats,
+          species['pokemon_v2_pokemoncolor']['name']);
 
       pokemons.add(pokemon);
     }
@@ -54,8 +60,8 @@ class Pokemon {
   Stats stats;
   String color;
 
-  Pokemon(
-      this.id, this.name, this.weight, this.types, this.abilities, this.stats, this.color);
+  Pokemon(this.id, this.name, this.weight, this.types, this.abilities,
+      this.stats, this.color);
 }
 
 class Abilities {
