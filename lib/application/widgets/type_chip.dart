@@ -18,7 +18,7 @@ class TypeChip extends StatelessWidget {
         return Color.fromRGBO(112, 88, 72, 1);
       case 'dragon':
         return Color.fromRGBO(112, 56, 248, 1);
-      case 'eletric':
+      case 'electric':
         return Color.fromRGBO(248, 208, 48, 1);
       case 'fairy':
         return Color.fromRGBO(238, 153, 172, 1);
@@ -46,6 +46,8 @@ class TypeChip extends StatelessWidget {
         return Color.fromRGBO(184, 160, 56, 1);
       case 'steel':
         return Color.fromRGBO(184, 184, 208, 1);
+      case 'water':
+        return Color.fromRGBO(104, 144, 240, 1);
     }
     return Colors.black;
   }
@@ -53,6 +55,7 @@ class TypeChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.only(right: 6),
         padding: EdgeInsets.all(10.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(50),
